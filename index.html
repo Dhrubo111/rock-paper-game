@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js"></script>
+</head>
+<body>
+  <div class="welcome">
+    <img id="mega-fight" src="./images/mega-fight.gif" alt="GIF Image" style="display: none;">
+    <img id="next-fight" src="./images/next-fight.gif" alt="GIF Image" style="display: none;">
+    <img id="fight" src="./images/fight.gif" alt="GIF Image" style="display: none;">
+    <em>welcome</em>
+  </div>
+<div class="content">
+  <div class="computer">
+    <h1>computer</h1>
+    <button><img src="./images/electron.gif" alt="images of electron" class="electron"></button>
+    <button><img src="./images/water.gif" alt="images of water"  class="water"></button>
+    <button><img src="./images/hipno.gif" alt="images of hipno"  class="hipno"></button>
+  </div>
+  <div class="vs">
+    <img src="./images/fire.gif" alt="images of vs" class="fire">
+  </div>
+  <div class="player">
+    <h1>Player</h1>
+    <button id="electron-button"><img src="./images/electron.gif" alt="images of electron" class="electron"></button>
+    <button id="water-button"><img src="./images/water.gif" alt="images of water"  class="water"></button>
+    <button id="hipno-button"><img src="./images/hipno.gif" alt="images of hipno" class="hipno"></button>
+  </div>
+</div>
+<div class="result">
+  <h2 id="final-result">result will be shown here</h2>
+  <h2 id="your-choice">your choice</h2>
+  <h2 id="computer-choice">computers choice</h2>
+</div>
+<div class="reset">
+  <button id="reset-button">reset</button>
+</div>
+</body>
+</html>
