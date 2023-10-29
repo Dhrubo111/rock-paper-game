@@ -23,7 +23,7 @@ function playGifNext() {
   // Hide the GIF after 10 seconds
   setTimeout(() => {
     gif.style.display = "none";
-  }, 2000); // 10,000 milliseconds = 10 seconds
+  }, 2400); // 10,000 milliseconds = 10 seconds
 }
 
 // Function to show and play the GIF and hide it after 10 seconds
