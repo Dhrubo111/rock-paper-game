@@ -1,8 +1,23 @@
 let count = 0 
 let youWon = 0 
 let computerWon = 0 
+const gameLimit = 6
+function isBattleWon(){
+  if(youWon > computerWon){
+    return true
+    
+  }else if (computerWon > youWon){
+    return false
+    
+  }else{
+    return 10
+    
+  }
+  
+}
+
 function increment() {
-  count++;
+    count++;
 }
 
 function reNew(){
@@ -96,6 +111,7 @@ let gameLogic = (choice) => {
 
 // Wait for the DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function() {
+
   let electron = document.getElementById("electron-button");
   let water = document.getElementById("water-button");
   let hipno = document.getElementById("hipno-button");
@@ -104,6 +120,34 @@ document.addEventListener("DOMContentLoaded", function() {
   let computerChoice = document.getElementById("computer-choice");
   let fightingMassage = document.getElementById("massage")
   let reset = document.getElementById("reset-button");
+
+  function finlaResult(){
+    result.textContent = "Result is reset";
+    yourChoice.textContent = "Your choice";
+    computerChoice.textContent = "Computer's choice";
+
+  }
+
+  function winingLogic(){
+    if(count === gameLimit || count >= gameLimit){
+      common = `[YOU :${youWon}] & [COMPUTER :${computerWon}]`
+      if(isBattleWon() === true){
+        
+        fightingMassage.textContent = common + ` You won the whole battle :)`;
+        reNew()
+        finlaResult()
+      }else if (isBattleWon() === false){
+       
+        fightingMassage.textContent = common +` Computer won the whole battle :(`;
+        reNew()
+        finlaResult()
+      }else if (isBattleWon() === 10){
+        fightingMassage.textContent = common+` its a Draw :]`;
+        reNew()
+        finlaResult()
+      }
+    }
+  }
 
   reset.addEventListener("click", function() {
     result.textContent = "Result is reset";
@@ -123,6 +167,8 @@ document.addEventListener("DOMContentLoaded", function() {
     increment()
     playGif()
     fightingMassage.textContent=`fighting done ${count} times`
+    winingLogic()
+
   });
 
   water.addEventListener("click", function() {
@@ -134,6 +180,7 @@ document.addEventListener("DOMContentLoaded", function() {
     increment()
     playGifNext()
     fightingMassage.textContent=`fighting done ${count} times`
+    winingLogic()
   });
 
   hipno.addEventListener("click", function() {
@@ -145,5 +192,10 @@ document.addEventListener("DOMContentLoaded", function() {
     increment()
     ultaPlayGifNext()
     fightingMassage.textContent=`fighting done ${count} times`
+    winingLogic()
   });
 });
+
+
+
+
