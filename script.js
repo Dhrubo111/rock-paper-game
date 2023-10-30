@@ -1,3 +1,26 @@
+let count = 0 
+let youWon = 0 
+let computerWon = 0 
+function increment() {
+  count++;
+}
+
+function reNew(){
+  count = 0 
+  youWon = 0 
+  computerWon = 0 
+} 
+
+function winCalc(who){
+  if(who=="You win"){
+    youWon++;
+  }else if (who=="Draw"){
+    computerWon = computerWon + 0.5 ;
+    youWon = youWon + 0.5
+  }else{
+    computerWon++; 
+  }
+}
 // Function to show and play the GIF and hide it after 10 seconds
 function playGif() {
   // Get the image element
@@ -79,36 +102,48 @@ document.addEventListener("DOMContentLoaded", function() {
   let result = document.getElementById("final-result");
   let yourChoice = document.getElementById("your-choice");
   let computerChoice = document.getElementById("computer-choice");
+  let fightingMassage = document.getElementById("massage")
   let reset = document.getElementById("reset-button");
 
   reset.addEventListener("click", function() {
     result.textContent = "Result is reset";
     yourChoice.textContent = "Your choice";
     computerChoice.textContent = "Computer's choice";
+    fightingMassage.textContent = "Game has been reset";
+    reNew();
     
   });
 
   electron.addEventListener("click", function() {
     let [compChoice, gameResult] = gameLogic("electron");
+    winCalc(gameResult);
     result.textContent = gameResult;
-    yourChoice.textContent = `Your choice is electron`;
-    computerChoice.textContent = `Computer's choice is ${compChoice}`;
+    yourChoice.textContent = `[You:${youWon}] Your choice is electron`;
+    computerChoice.textContent = `[computer:${computerWon}] Computer's choice is ${compChoice}`;
+    increment()
     playGif()
+    fightingMassage.textContent=`fighting done ${count} times`
   });
 
   water.addEventListener("click", function() {
     let [compChoice, gameResult] = gameLogic("water");
+    winCalc(gameResult);
     result.textContent = gameResult;
-    yourChoice.textContent = `Your choice is water`;
-    computerChoice.textContent = `Computer's choice is ${compChoice}`;
+    yourChoice.textContent = `[You:${youWon}] Your choice is water`;
+    computerChoice.textContent = `[computer:${computerWon}] Computer's choice is ${compChoice}`;
+    increment()
     playGifNext()
+    fightingMassage.textContent=`fighting done ${count} times`
   });
 
   hipno.addEventListener("click", function() {
     let [compChoice, gameResult] = gameLogic("hipno");
+    winCalc(gameResult);
     result.textContent = gameResult;
-    yourChoice.textContent = `Your choice is hipno`;
-    computerChoice.textContent = `Computer's choice is ${compChoice}`;
+    yourChoice.textContent = `[You:${youWon}] Your choice is hipno`;
+    computerChoice.textContent = `[computer:${computerWon}] Computer's choice is ${compChoice}`;
+    increment()
     ultaPlayGifNext()
+    fightingMassage.textContent=`fighting done ${count} times`
   });
 });
