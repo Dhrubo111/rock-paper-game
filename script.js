@@ -1,3 +1,7 @@
+
+
+
+
 let count = 0 
 let youWon = 0 
 let computerWon = 0 
@@ -15,6 +19,9 @@ function isBattleWon(){
   }
   
 }
+
+
+
 
 function increment() {
     count++;
@@ -111,7 +118,7 @@ let gameLogic = (choice) => {
 
 // Wait for the DOM to be fully loaded
 document.addEventListener("DOMContentLoaded", function() {
-
+  let bot = document.querySelectorAll(".bot")
   let electron = document.getElementById("electron-button");
   let water = document.getElementById("water-button");
   let hipno = document.getElementById("hipno-button");
@@ -120,6 +127,27 @@ document.addEventListener("DOMContentLoaded", function() {
   let computerChoice = document.getElementById("computer-choice");
   let fightingMassage = document.getElementById("massage")
   let reset = document.getElementById("reset-button");
+
+
+  function wrongClick(){
+    fightingMassage.textContent = "only click Player cards not computer cards"
+
+  }
+
+
+
+  bot.forEach(
+    btn => {
+      btn.addEventListener(
+        "click" , ()=>{
+          wrongClick()
+        }
+      )
+    }
+  )
+
+
+
 
   function finlaResult(){
     result.textContent = "Result is reset";

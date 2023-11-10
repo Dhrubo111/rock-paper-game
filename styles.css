@@ -3,14 +3,16 @@ body{
 }
 .result{
   color: wheat;
+  text-align: center;
 }
 .content{
   color: wheat;
- 
   display: flex;
   flex-direction: column;
   align-items: center;
   border: 4px solid ;
+  max-width: 500px;
+  margin: 0 auto;
   
   
 }
